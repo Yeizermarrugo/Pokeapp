@@ -440,7 +440,7 @@ img{
   gap: 15px;
 }
 
-button {
+.btn {
   padding: 5px 10px;
   border-radius: 3px;
   height: 30px;

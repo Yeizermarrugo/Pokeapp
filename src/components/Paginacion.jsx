@@ -35,7 +35,7 @@ export const Paginacion = ({ pagina, setPagina, maximo }) => {
 
     return (
         <div className="container">
-            <button disabled={pagina === 1 || pagina < 1} onClick={previousPage}>
+            <button className="btn" disabled={pagina === 1 || pagina < 1} onClick={previousPage}>
                 <svg viewBox="0 0 20 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                 </svg>
             </button>
@@ -48,6 +48,7 @@ export const Paginacion = ({ pagina, setPagina, maximo }) => {
             />
             <p> de: {maximo} </p>
             <button
+            className="btn"
                 disabled={pagina === Math.ceil(maximo) || pagina > Math.ceil(maximo)}
                 onClick={nextPage}
             >
