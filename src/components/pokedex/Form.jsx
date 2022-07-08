@@ -29,10 +29,10 @@ const Form = ({setPokeSearch, typeList, setFilterType}) => {
           ))
         }
       </select>
-      <button  className='switch' id="switch">
+      {/* <button  className='switch' id="switch">
         <span className="sun"><i className="fas fa-sun"></i></span>
         <span className="moon"><i className="fas fa-moon"></i></span>
-      </button>
+      </button> */}
     </form>
   )
 }
