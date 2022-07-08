@@ -17,7 +17,7 @@ const PokedexScreen = () => {
 
 
   const [pagina, setPagina] = useState(1)
-  const [porPagina, setPorPagina] = useState(18)
+  const [porPagina, setPorPagina] = useState(20)
 
   const maximo = Math.ceil(pokemons?.length / porPagina)
 
