@@ -22,6 +22,7 @@ function App() {
         <Route path='/pokemon/:name' element={<PokeInfoScreen />} />
       </Routes>
     </div>
+    
     </>
   )
 }

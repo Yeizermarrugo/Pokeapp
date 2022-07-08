@@ -14,7 +14,7 @@ const PokedexScreen = () => {
   const [filterPokemon, setFilterPokemon] = useState()
   const [typeList, setTypeList] = useState()
   const [filterType, setFilterType] = useState('All Pokemons')
-//   const [currentPage, setCurrentPage] = useState(1)
+
 
   const [pagina, setPagina] = useState(1)
   const [porPagina, setPorPagina] = useState(18)
@@ -24,19 +24,14 @@ const PokedexScreen = () => {
 
   useEffect(() => {
     if(filterType === 'All Pokemons'){
-        let locationNumber
-        if (pokemons === undefined) {
-          locationNumber = Math.ceil(1154)
-        } else {
-          locationNumber = pokemons
-        }
-        console.log(locationNumber)
+        const locationNumber = 1154
       // Todos los pokemons
       const URL_POKEMONS = `https://pokeapi.co/api/v2/pokemon/?offset=0&limit=${locationNumber}`
       axios.get(URL_POKEMONS)
         .then(res => {
           console.log(res.data.results)
           setPokemons(res.data.results)
+          setPokeSearch('')
         })
         .catch(err => console.log(err))
     } else {
@@ -46,6 +41,7 @@ const PokedexScreen = () => {
         .then(res => {
           const array = res.data.pokemon.map(e => e.pokemon)
           setPokemons(array)
+          setPokeSearch('')
         })
         .catch(err => console.log(err))
     }
@@ -60,7 +56,7 @@ const PokedexScreen = () => {
   
   useEffect(() => {
     setFilterPokemon(pokemons?.filter(e => e.name.includes(pokeSearch?.toLowerCase())))
-  }, [pokeSearch])
+  }, [pokeSearch, pokemons])
 
   console.log(pokemons)
 
@@ -94,6 +90,11 @@ const PokedexScreen = () => {
               />
             ))
         }
+      </div>
+      <div className="footer">
+      <i class='bx bxl-netlify' ></i> <p></p>
+        <p><b>Made by Yeizer Marrugo</b></p> <p></p>
+        <i class='bx bxl-github' ></i>
       </div>
     </div>
   )

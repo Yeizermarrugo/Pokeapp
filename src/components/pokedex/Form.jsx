@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Form = ({setPokeSearch, typeList, setFilterType}) => {
+
+
 
   const changeInputText = e => {
     setPokeSearch(e.target.value)
@@ -9,6 +11,8 @@ const Form = ({setPokeSearch, typeList, setFilterType}) => {
   const changeSelect = e => {
     setFilterType(e.target.value)
   }
+
+ 
 
   return (
     <form>
@@ -25,6 +29,10 @@ const Form = ({setPokeSearch, typeList, setFilterType}) => {
           ))
         }
       </select>
+      <button  className='switch' id="switch">
+        <span className="sun"><i className="fas fa-sun"></i></span>
+        <span className="moon"><i className="fas fa-moon"></i></span>
+      </button>
     </form>
   )
 }
