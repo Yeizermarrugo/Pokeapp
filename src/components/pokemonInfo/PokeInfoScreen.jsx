@@ -1,22 +1,31 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import Loading from '../Loading'
 
 const PokeInfoScreen = () => {
     const {name} = useParams()
     const [poke, setPoke] = useState()
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         const URL = `https://pokeapi.co/api/v2/pokemon/${name}`
         axios.get(URL)
-            .then(res => setPoke(res.data))
+            .then(res => {
+                setPoke(res.data)
+                setIsLoading(false)
+            })
             .catch(err => console.error(err))
     }, [])
 
 
   return (
     <div>
-        <main className="flex">
+        {
+            isLoading ?
+            <Loading/>
+            :
+            <main className="flex">
         <article  className="card2">
             <img className={`${poke?.types[0].type.name}`}/>
             <img src={poke?.sprites.other['official-artwork'].front_default} className="card-body-img"/>
@@ -29,8 +38,8 @@ const PokeInfoScreen = () => {
                     {poke?.types.map((tipo)=>{
                         return (
                             <span key={tipo.type.name}>/{tipo.type.name}/</span>
-                        )
-                    })}
+                            )
+                        })}
                 </span>
 
                 </div>
@@ -70,11 +79,12 @@ const PokeInfoScreen = () => {
                 {
                     poke?.moves.map(move =>(
                         <li key={move.move.url}>{move.move.name}</li>
-                    ))
+                        ))
                 }
             </ul>
         </article>
     </main>
+}
     </div>
     
   )
