@@ -15,9 +15,9 @@ const PokeInfoScreen = () => {
 
 
   return (
-    <div key={poke?.name}>
+    <div>
         <main className="flex">
-        <article className="card2">
+        <article  className="card2">
             <img className={`${poke?.types[0].type.name}`}/>
             <img src={poke?.sprites.other['official-artwork'].front_default} className="card-body-img"/>
             <h1 className="card-body-title">
@@ -28,7 +28,7 @@ const PokeInfoScreen = () => {
                 <span className={poke?.types[0].type.name}>
                     {poke?.types.map((tipo)=>{
                         return (
-                            <span>/{tipo.type.name}/</span>
+                            <span key={tipo.type.name}>/{tipo.type.name}/</span>
                         )
                     })}
                 </span>
